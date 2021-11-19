@@ -3,6 +3,7 @@ from student import Student
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk
+import os
 
 
 class Face_Recognition_System:
@@ -113,10 +114,10 @@ class Face_Recognition_System:
         img9=img9.resize((150,150),Image.ANTIALIAS)
         self.photoimg9=ImageTk.PhotoImage(img9)
         
-        b1=Button(bg_img,image=self.photoimg9,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg9,cursor="hand2",command=self.open_img)
         b1.place(x=455,y=320,width=150,height=150)
 
-        b1=Button(bg_img,text="Photos",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1=Button(bg_img,text="Photos",cursor="hand2",command=self.open_img,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1.place(x=455,y=450,width=150,height=25)
 
 
@@ -142,6 +143,10 @@ class Face_Recognition_System:
 
         b1=Button(bg_img,text="Exit",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1.place(x=935,y=450,width=150,height=25)
+
+
+    def open_img(self):
+        os.startfile(r"C:\Users\lenovo\Desktop\miner project face recognition\DATA")    
 
 
 
