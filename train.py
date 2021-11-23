@@ -61,9 +61,9 @@ class Train:
 
         # ============ Train the classifires=================
         
-        clf=cv2.face.LBPHFaceRecogizer.create()
-        clf.train(faces,id)
-        clf.write("classifier.xml")
+        clf=cv2.face.LBPHFaceRecognizer_create()
+        clf.train(faces,ids)
+        clf.write(r"C:\Users\lenovo\Desktop\miner project face recognition\classifier.xml")
         cv2.destroyAllWindows()
         messagebox.showinfo("Result","Training datasets completed")
     
