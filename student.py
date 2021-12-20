@@ -435,7 +435,7 @@ class Student:
                 if update>0:
                     conn=mysql.connector.connect(host="localhost",username="root",password="vinayak",database="face_recognizer")
                     my_cursor=conn.cursor()
-                    my_cursor.execute("update student set dep=%s,course=%s,year=%s,semester=%s,name=%s,division=%s,roll_no=%s,gender=%s,dob=%s,email=%s,phone=%s,address=%s,teacher=%s,photosample=%s where student_id=%s",(
+                    my_cursor.execute("update student set dep=%s,course=%s,year=%s,semester=%s,name=%s,division=%s,roll_no=%s,gender=%s,dob=%s,email=%s,phone=%s,address=%s,teacher=%s,photosamole=%s where student_id=%s",(
                                                                                                                                                                                         self.var_dep.get(),
                                                                                                                                                                                         self.var_course.get(),
                                                                                                                                                                                         self.var_year.get(),
@@ -567,7 +567,7 @@ class Student:
                         cv2.putText(face,str(img_id),(50,50),cv2.FONT_HERSHEY_COMPLEX,2,(0,255,0))
                         cv2.imshow("face_croppede",face)  
     
-                    if cv2.waitKey(1)==13 or int(img_id)==20:
+                    if cv2.waitKey(1)==13 or int(img_id)==100:
                         break
                 cap.release()
                 cv2.destroyAllWindows()  

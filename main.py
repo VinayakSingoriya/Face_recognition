@@ -5,7 +5,12 @@ from tkinter import ttk
 from PIL import Image,ImageTk
 import os
 from train import Train
-from face_recognition import Face_Recognition
+from face_recognition1 import Face_Recognition
+from developer import Developer
+from help import Help
+import tkinter
+from time import strftime
+from datetime import datetime
 
 
 class Face_Recognition_System:
@@ -51,6 +56,16 @@ class Face_Recognition_System:
         title_lbl=Label(bg_img,text="FACE  RECOGNITION  ATTENDANCE  SYSTEM ",font=("times new roman",30,"bold"),bg="grey",fg="black")
         title_lbl.place(x=0,y=0,width=1366,height=40)
 
+        #*************************time*******************
+        def time():
+            string=strftime('%H:%M:%S %p')
+            lbl.config(text = string)
+            lbl.after(1000,time)
+
+        lbl=Label(title_lbl,font= ("times new roman",14,"bold"),bg="gray",fg="blue")
+        lbl.place(x=0,y=0,width=110,height=50)
+        time()
+
         # student button
         img4=Image.open(r"C:\Users\lenovo\Desktop\miner project face recognition\college_image\safjqew.jpg")
         img4=img4.resize((150,150),Image.ANTIALIAS)
@@ -92,10 +107,10 @@ class Face_Recognition_System:
         img7=img7.resize((150,150),Image.ANTIALIAS)
         self.photoimg7=ImageTk.PhotoImage(img7)
         
-        b1=Button(bg_img,image=self.photoimg7,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg7,cursor="hand2",command=self.help_data)
         b1.place(x=935,y=100,width=150,height=150)
 
-        b1=Button(bg_img,text="Help Desk",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1=Button(bg_img,text="Help Desk",cursor="hand2",command=self.help_data,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1.place(x=935,y=250,width=150,height=25)
 
 
@@ -128,10 +143,10 @@ class Face_Recognition_System:
         img10=img10.resize((150,150),Image.ANTIALIAS)
         self.photoimg10=ImageTk.PhotoImage(img10)
         
-        b1=Button(bg_img,image=self.photoimg10,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg10,cursor="hand2",command=self.developer_data)
         b1.place(x=695,y=320,width=150,height=150)
 
-        b1=Button(bg_img,text="Developer",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1=Button(bg_img,text="Developer",cursor="hand2",command=self.developer_data,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1.place(x=695,y=450,width=150,height=25)
 
 
@@ -140,15 +155,23 @@ class Face_Recognition_System:
         img11=img11.resize((150,150),Image.ANTIALIAS)
         self.photoimg11=ImageTk.PhotoImage(img11)
         
-        b1=Button(bg_img,image=self.photoimg11,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg11,cursor="hand2",command=self.iExit)
         b1.place(x=935,y=320,width=150,height=150)
 
-        b1=Button(bg_img,text="Exit",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1=Button(bg_img,text="Exit",command=self.iExit,cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1.place(x=935,y=450,width=150,height=25)
 
 
     def open_img(self):
-        os.startfile(r"C:\Users\lenovo\Desktop\miner project face recognition\DATA")    
+        os.startfile(r"C:\Users\lenovo\Desktop\miner project face recognition\DATA")  
+
+
+    def iExit(self):
+        self.iExit=tkinter.messagebox.askyesno("Face_Recognition","Are you sure exit this project",)
+        if self.iExit>0:
+            self.root. destroy()
+        else:
+            return    
 
 
 
@@ -170,8 +193,21 @@ class Face_Recognition_System:
     def face_data(self):
         self.new_window=Toplevel(self.root)
         self.app=Face_Recognition(self.new_window)    
-    
 
+
+    def developer_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Developer(self.new_window)       
+
+
+    def help_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Help(self.new_window)      
+    
+   
+
+    
+    
 
 
 
